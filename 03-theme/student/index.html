@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Week 6 Demo</title>
+    <style>
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 2rem; }
+      .card { padding: 1rem; border: 1px solid #e5e7eb; border-radius: 12px; max-width: 640px; }
+      .row { display:flex; gap: 1rem; align-items:center; }
+      .space-y > * + * { margin-top: .75rem; }
+    </style>
+    <!-- React 18 + ReactDOM UMD -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel for in-browser JSX transform (teaching/demo only) -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Emotion + MUI UMD -->
+    <script src="https://unpkg.com/@emotion/react@11.11.4/dist/emotion-react.umd.min.js"></script>
+    <script src="https://unpkg.com/@emotion/styled@11.11.5/dist/emotion-styled.umd.min.js"></script>
+    <script src="https://unpkg.com/@mui/material@5.15.14/umd/material-ui.development.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+<script type="text/babel">
+const root = ReactDOM.createRoot(document.getElementById('root'));
+const { Button, TextField, Typography } = MaterialUI;
+const { ThemeProvider, createTheme } = MaterialUI.styles;
+
+/**
+ * TODO:
+ * 1) Create a theme with custom palette (primary/secondary colors).
+ * 2) Wrap <App/> with <ThemeProvider theme={theme}> in ReactDOM.render() call.
+ * 3) Verify Buttons/TextFields pick up the theme colors.
+ */
+
+function App(){
+  return (
+    <div className="card space-y">
+      <Typography variant="h5" gutterBottom>03 — Theme (Student)</Typography>
+      <Button variant="contained" color="primary">Primary Button</Button>
+      <Button variant="outlined" color="secondary">Secondary Button</Button>
+      <TextField label="Name" />
+    </div>
+  );
+}
+
+const theme = createTheme({
+  palette: {
+    primary: { main: '#1976d2' },
+    secondary: { main: '#dc004e' },
+  },
+});
+
+root.render(
+  <ThemeProvider theme={theme}>
+    <App />
+  </ThemeProvider>
+);
+</script>
+
+  </body>
+</html>

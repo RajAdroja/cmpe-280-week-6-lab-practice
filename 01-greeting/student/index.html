@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Week 6 Demo</title>
+    <style>
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 2rem; }
+      .card { padding: 1rem; border: 1px solid #e5e7eb; border-radius: 12px; max-width: 640px; }
+      .row { display:flex; gap: 1rem; align-items:center; }
+      .space-y > * + * { margin-top: .75rem; }
+    </style>
+    <!-- React 18 + ReactDOM UMD -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel for in-browser JSX transform (teaching/demo only) -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Emotion + MUI UMD -->
+    <script src="https://unpkg.com/@emotion/react@11.11.4/dist/emotion-react.umd.min.js"></script>
+    <script src="https://unpkg.com/@emotion/styled@11.11.5/dist/emotion-styled.umd.min.js"></script>
+    <script src="https://unpkg.com/@mui/material@5.15.14/umd/material-ui.development.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+<script type="text/babel">
+const root = ReactDOM.createRoot(document.getElementById('root'));
+
+/**
+ * TODO:
+ * 1) Create a functional component <Greeting> that accepts a 'name' prop
+ *    and renders: <h2>Hello, {name}!</h2>
+ * 2) Render it 3 times with different names.
+ * Example: <Greeting name="Alice" />
+ */
+
+function Greeting(props) {
+  return <h2>Hello, {props.name}!</h2>;
+}
+
+function App(){
+  return (
+    <div className="card space-y">
+      <h1>01 — Greeting (Student)</h1>
+      <p>Implement the <code>&lt;Greeting /&gt;</code> component below.</p>
+      {/* Insert your <Greeting/> usages here */}
+      <Greeting name="Alice" />
+      <Greeting name="Bob" />
+      <Greeting name="Charlie" />
+    </div>
+  );
+}
+
+root.render(<App />);
+</script>
+
+  </body>
+</html>

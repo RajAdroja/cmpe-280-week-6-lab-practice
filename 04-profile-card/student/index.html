@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Week 6 Demo</title>
+    <style>
+      body { font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; margin: 2rem; }
+      .card { padding: 1rem; border: 1px solid #e5e7eb; border-radius: 12px; max-width: 640px; }
+      .row { display:flex; gap: 1rem; align-items:center; }
+      .space-y > * + * { margin-top: .75rem; }
+    </style>
+    <!-- React 18 + ReactDOM UMD -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <!-- Babel for in-browser JSX transform (teaching/demo only) -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <!-- Emotion + MUI UMD -->
+    <script src="https://unpkg.com/@emotion/react@11.11.4/dist/emotion-react.umd.min.js"></script>
+    <script src="https://unpkg.com/@emotion/styled@11.11.5/dist/emotion-styled.umd.min.js"></script>
+    <script src="https://unpkg.com/@mui/material@5.15.14/umd/material-ui.development.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+
+<script type="text/babel">
+const root = ReactDOM.createRoot(document.getElementById('root'));
+const { Card, CardContent, Typography, Avatar, Button } = MaterialUI;
+
+/**
+ * TODO:
+ * 1) Create <ProfileCard name role img /> component using MUI Card + Avatar + Typography.
+ * 2) Render 3 users from a small array (map).
+ * 3) Stretch: add a "Follow" <Button color="primary" />.
+ */
+
+function ProfileCard({ name, role, img }) {
+  return (
+    <Card sx={{ mb: 2 }}>
+      <CardContent sx={{ display: 'flex', alignItems: 'center', gap: 2 }}>
+        <Avatar src={img} alt={name} />
+        <div style={{ flexGrow: 1 }}>
+          <Typography variant="h5">{name}</Typography>
+          <Typography color="text.secondary">{role}</Typography>
+        </div>
+        <Button variant="contained" color="primary">Follow</Button>
+      </CardContent>
+    </Card>
+  );
+}
+
+const users = [
+  { name: "Alice", role: "Engineer", img: "https://i.pravatar.cc/150?img=1" },
+  { name: "Bob", role: "Designer", img: "https://i.pravatar.cc/150?img=2" },
+  { name: "Carol", role: "PM", img: "https://i.pravatar.cc/150?img=3" }
+];
+
+function App(){
+  return (
+    <div className="space-y">
+      <h1>04 — Profile Card (Student)</h1>
+      {users.map(user => (
+        <ProfileCard key={user.name} name={user.name} role={user.role} img={user.img} />
+      ))}
+    </div>
+  );
+}
+
+root.render(<App />);
+</script>
+
+  </body>
+</html>
